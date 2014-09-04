@@ -18,6 +18,9 @@ namespace SatQ
 
         }
 
+        /// <summary>
+        /// Sets console size and Intro/About Text
+        /// </summary>
         static void About()
         {
             Console.SetWindowSize(90, 30);
