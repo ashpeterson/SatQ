@@ -1,0 +1,9 @@
+
+			      Welcome to Shaun and the Quest
+This is a simple text based game I'm developing to help improve my programming skills
+If you have any quesions or wish to help, please don't hesitate to contact me on GitHub
+			
+			Level text Copyright © 2014 Rebecca Gibbon
+Level Text may be used free of charge. Selling without prior written consent prohibited
+ Obtain permission before redistributing. In all cases this notice must remain intact
+			    Published under the GNU v3 License

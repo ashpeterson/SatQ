@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SatQ
 {
-    class Program
+    class Game
     {
         private static string nme = string.Empty;
 
@@ -16,39 +16,32 @@ namespace SatQ
             //Set goto tag, Call about and wait 4 seconds
         Start:
             About();
-            System.Threading.Thread.Sleep(4000);
-
+            System.Threading.Thread.Sleep(2000);
             //Ask user for a name
-           AskNme();
+            AskNme();
 
-            //Test
-           Console.WriteLine(nme);
-           System.Threading.Thread.Sleep(4000);
+            Levels.LevelOne();
 
             goto Start;
-
         }
 
         /// <summary>
-        /// Sets console size and Intro/About Text. Displays basic about and 
+        /// Sets console size, Curser size and calls Intro/About Text from About.txt. Displays basic about and 
         /// licence informaton.
         /// </summary>
         static void About()
         {
+            //set window and cursor size
             Console.SetWindowSize(90, 30);
+            Console.CursorSize = 100;
+            //set console title, colour for Title and print title to console
             Console.Title = "SatQ";
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(String.Format("{0," + Console.WindowWidth * 0.6 + "}", "Shaun and the Quest"));
-            Console.WriteLine("");
+            //change colour for main text and print from About.txt
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 1.5 + "}", "Welcome to Shaun and the Quest"));
-            Console.WriteLine("This is a simple text based game I'm developing to help improve my programming skills");
-            Console.WriteLine("If you have any quesions or wish to help, please dont hesitate to contact me on GitHub");
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth * 0.7 + "}", "Published under the GNU v3 License"));
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
+            string About = System.IO.File.ReadAllText(@"Recorces\Other\About.txt");
+            Console.WriteLine(About);
         }
 
         /// <summary>
@@ -59,8 +52,8 @@ namespace SatQ
         {
             //Set lable and ask for name
         ChooseName:
-            Console.Write("Please enter a carictor name name: ");
-            Program.nme = Console.ReadLine();
+            Console.Write("Please enter your character name: ");
+            Game.nme = Console.ReadLine();
 
             //Comfirm username then convert anwnser to lower, Set invalid entry lable
         Invalid:
