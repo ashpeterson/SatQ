@@ -9,7 +9,7 @@ namespace SatQ
 {
     class Program
     {
-        private string nme = string.Empty;
+        private static string nme = string.Empty;
 
         public static void Main(string[] args)
         { 
@@ -20,6 +20,10 @@ namespace SatQ
 
             //Ask user for a name
            AskNme();
+
+            //Test
+           Console.WriteLine(nme);
+           System.Threading.Thread.Sleep(4000);
 
             goto Start;
 
@@ -56,25 +60,26 @@ namespace SatQ
             //Set lable and ask for name
         ChooseName:
             Console.Write("Please enter a carictor name name: ");
-            string nme = Console.ReadLine();
+            Program.nme = Console.ReadLine();
 
             //Comfirm username then convert anwnser to lower, Set invalid entry lable
         Invalid:
             Console.Write("Are you sure you want to use {0} for your name, Y or N: ", nme);
-            string YesNo = Console.ReadLine();
-            YesNo.ToLower();
+            string YesNo = Console.ReadLine().ToLower();
 
-            // If yes then carry on if not goto askname
+            // If yes then carry on
             if (YesNo == "yes" || YesNo == "y")
             {
                 Console.WriteLine("Welcome {0} to the relm of Shaun", nme);
             }
 
+            //If no then goto "ChooseName"
             else if (YesNo == "no" || YesNo == "n")
             {
                 goto ChooseName;
             }
 
+            // If invalid keypress goto "Invalid"
             else
             {
                 Console.WriteLine("Please enter Y or N");
