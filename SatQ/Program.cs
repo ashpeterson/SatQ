@@ -9,17 +9,25 @@ namespace SatQ
 {
     class Program
     {
+        private string nme = string.Empty;
+
         public static void Main(string[] args)
-        {
+        { 
+            //Set goto tag, Call about and wait 4 seconds
         Start:
             About();
-            System.Threading.Thread.Sleep(3000);
+            System.Threading.Thread.Sleep(4000);
+
+            //Ask user for a name
+           AskNme();
+
             goto Start;
 
         }
 
         /// <summary>
-        /// Sets console size and Intro/About Text
+        /// Sets console size and Intro/About Text. Displays basic about and 
+        /// licence informaton.
         /// </summary>
         static void About()
         {
@@ -27,11 +35,52 @@ namespace SatQ
             Console.Title = "SatQ";
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(String.Format("{0," + Console.WindowWidth * 0.6 + "}", "Shaun and the Quest"));
+            Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 1.5 + "}", "Welcome to Shaun and the Quest"));
             Console.WriteLine("This is a simple text based game I'm developing to help improve my programming skills");
             Console.WriteLine("If you have any quesions or wish to help, please dont hesitate to contact me on GitHub");
             Console.WriteLine(String.Format("{0," + Console.WindowWidth * 0.7 + "}", "Published under the GNU v3 License"));
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+        }
+
+        /// <summary>
+        /// Ask User for charictor name and store it in string "nme"
+        /// To be called during a charictor rename event (If ever implimanted)
+        /// </summary>
+        static void AskNme()
+        {
+            //Set lable and ask for name
+        ChooseName:
+            Console.Write("Please enter a carictor name name: ");
+            string nme = Console.ReadLine();
+
+            //Comfirm username then convert anwnser to lower, Set invalid entry lable
+        Invalid:
+            Console.Write("Are you sure you want to use {0} for your name, Y or N: ", nme);
+            string YesNo = Console.ReadLine();
+            YesNo.ToLower();
+
+            // If yes then carry on if not goto askname
+            if (YesNo == "yes" || YesNo == "y")
+            {
+                Console.WriteLine("Welcome {0} to the relm of Shaun", nme);
+            }
+
+            else if (YesNo == "no" || YesNo == "n")
+            {
+                goto ChooseName;
+            }
+
+            else
+            {
+                Console.WriteLine("Please enter Y or N");
+                goto Invalid;
+            }
+
         }
 
     }
