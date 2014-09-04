@@ -14,9 +14,10 @@ namespace SatQ
 
         public static void LevelOne()
         {
+            GameState = true;
+            Level = 1;
             LevelText = System.IO.File.ReadAllText(@"Recorces\Levels\One.txt");
             Console.WriteLine(LevelText);
         }
-
     }
 }

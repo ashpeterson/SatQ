@@ -1,4 +1,0 @@
-SatQ
-====
-
-SatQ Learning Development
